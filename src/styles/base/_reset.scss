@@ -1,4 +1,4 @@
-@use "../abstracts/colors";
+@use "../abstracts/colors" as *;
 
 body {
     padding: 0;
@@ -6,6 +6,7 @@ body {
 }
 
 .light {
+    color: $light-grey-blue;
     .text {
         color: $light-grey-blue;
     }
@@ -16,10 +17,15 @@ body {
 }
 
 .dark {
+    color: $dark-white;
     .text {
         color: $dark-white;
     }
     .background {
         background-color: $dark-black-blue;
     }
+}
+
+.github-avatar {
+    border-radius: 50%;
 }

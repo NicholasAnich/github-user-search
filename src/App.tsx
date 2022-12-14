@@ -1,39 +1,28 @@
-import { useState, useEffect, ChangeEvent } from "react";
-import axios from "axios";
-// import "./App.css";
+import { useState, useContext } from "react";
+import { UserData } from "./interfaces/interface";
+import Searchbar from "./components/Searchbar";
+import Header from "./components/Header";
+import { ThemeContext } from "./context/ThemeContext";
+import "./styles/_main.scss";
 
-interface UserData {
-    name: string;
-    login: string;
-    public_repos: number;
-    followers: number;
-    following: number;
-    created_at: string;
-    location: string;
-    url: string;
-    avatar_url: string;
-    company: string;
-    twitter_username: string;
-}
+const initialUser = {
+    name: "",
+    login: "",
+    public_repos: 0,
+    followers: 0,
+    following: 0,
+    created_at: "",
+    location: "",
+    url: "",
+    avatar_url: "",
+    company: "",
+    twitter_username: "",
+};
 
 function App() {
-    const [theme, setTheme] = useState("light");
-    const [searchTerm, setSearchTerm] = useState<string>("");
-    const [userName, setUserName] = useState<string>("octocat");
-    const [gitHubUser, setGitHubUser] = useState<UserData>({
-        name: "",
-        login: "",
-        public_repos: 0,
-        followers: 0,
-        following: 0,
-        created_at: "",
-        location: "",
-        url: "",
-        avatar_url: "",
-        company: "",
-        twitter_username: "",
-    });
-
+    const { theme, setTheme, setThemeInStorage } =
+        useContext(ThemeContext);
+    const [gitHubUser, setGitHubUser] = useState<UserData>(initialUser);
     const {
         name,
         login,
@@ -47,22 +36,22 @@ function App() {
         company,
         twitter_username,
     } = gitHubUser;
-    let query = `https://api.github.com/users/${userName}`;
 
     function toggleTheme() {
         if (theme === "light") {
-            return setTheme("dark");
+            setTheme("dark");
+            setThemeInStorage("dark");
+            // console.log(theme);
         } else {
             setTheme("light");
+            setThemeInStorage("light");
+            // console.log(theme);
+            // setThemeInStorage(theme);
         }
     }
 
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setSearchTerm(event.target.value);
-    }
-
-    function handleSubmit() {
-        setUserName(searchTerm);
+    function setUser(response) {
+        setGitHubUser(response);
     }
 
     function formatDate() {
@@ -85,46 +74,20 @@ function App() {
         return result;
     }
 
-    useEffect(() => {
-        async function getUserData() {
-            const response = await axios.get(query).then(({ data }) => {
-                console.log(data);
-                return data;
-            });
-            setGitHubUser(response);
-        }
-        getUserData();
-    }, [userName]);
-
     return (
         <div className={`App ${theme}`}>
-            <main>
-                <h1>Github User Search</h1>
-                <label htmlFor="search">username</label>
-                <input
-                    id="search"
-                    type="text"
-                    onChange={handleChange}
-                    value={searchTerm}
-                />
-                <button onClick={handleSubmit}>Search</button>
+            <main className="background">
+                <Header toggleTheme={toggleTheme} />
+                <Searchbar setUser={setUser} />
                 <div>
-                    <span onClick={toggleTheme}>
-                        {theme === "light" ? (
-                            <img
-                                src="./public/assets/icon-moon.svg"
-                                alt=""
-                            />
-                        ) : (
-                            <img
-                                src="./public/assets/icon-sun.svg"
-                                alt=""
-                            />
-                        )}
-                    </span>
                     <p>{name}</p>
                     <p>{login}</p>
-                    <img src={avatar_url} alt={`$Github user${name}`} />
+                    <img
+                        className="github-avatar"
+                        src={avatar_url}
+                        alt={`$Github user ${name}`}
+                        width={70}
+                    />
                     <span>
                         Joined <span>{formatDate()}</span>
                     </span>
@@ -134,15 +97,15 @@ function App() {
                     </p>
                     <div>
                         <div>
-                            <span>Repos</span>
+                            <span>Repos </span>
                             {public_repos}
                         </div>
                         <div>
-                            <span>Followers</span>
+                            <span>Followers </span>
                             {followers}
                         </div>
                         <div>
-                            <span>Following</span>
+                            <span>Following </span>
                             {following}
                         </div>
                     </div>
