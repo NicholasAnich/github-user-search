@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import axios from "axios";
-import "./App.css";
+// import "./App.css";
 
 interface UserData {
     name: string;
@@ -17,6 +17,7 @@ interface UserData {
 }
 
 function App() {
+    const [theme, setTheme] = useState("light");
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [userName, setUserName] = useState<string>("octocat");
     const [gitHubUser, setGitHubUser] = useState<UserData>({
@@ -33,8 +34,28 @@ function App() {
         twitter_username: "",
     });
 
-    const { name, login, public_repos, followers, following, created_at, location, url, avatar_url, company, twitter_username } = gitHubUser;
+    const {
+        name,
+        login,
+        public_repos,
+        followers,
+        following,
+        created_at,
+        location,
+        url,
+        avatar_url,
+        company,
+        twitter_username,
+    } = gitHubUser;
     let query = `https://api.github.com/users/${userName}`;
+
+    function toggleTheme() {
+        if (theme === "light") {
+            return setTheme("dark");
+        } else {
+            setTheme("light");
+        }
+    }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSearchTerm(event.target.value);
@@ -51,8 +72,13 @@ function App() {
             month: "short",
             year: "numeric",
         };
-        const formattedDate = date.toLocaleDateString("en-US", options).split(" ");
-        [formattedDate[0], formattedDate[1]] = [formattedDate[1], formattedDate[0]];
+        const formattedDate = date
+            .toLocaleDateString("en-US", options)
+            .split(" ");
+        [formattedDate[0], formattedDate[1]] = [
+            formattedDate[1],
+            formattedDate[0],
+        ];
         formattedDate[0] = formattedDate[0].slice(0, 2);
         const result = formattedDate.join(" ");
 
@@ -71,38 +97,59 @@ function App() {
     }, [userName]);
 
     return (
-        <div className="App">
+        <div className={`App ${theme}`}>
             <main>
                 <h1>Github User Search</h1>
                 <label htmlFor="search">username</label>
-                <input id="search" type="text" onChange={handleChange} value={searchTerm} />
+                <input
+                    id="search"
+                    type="text"
+                    onChange={handleChange}
+                    value={searchTerm}
+                />
                 <button onClick={handleSubmit}>Search</button>
                 <div>
+                    <span onClick={toggleTheme}>
+                        {theme === "light" ? (
+                            <img
+                                src="./public/assets/icon-moon.svg"
+                                alt=""
+                            />
+                        ) : (
+                            <img
+                                src="./public/assets/icon-sun.svg"
+                                alt=""
+                            />
+                        )}
+                    </span>
                     <p>{name}</p>
                     <p>{login}</p>
                     <img src={avatar_url} alt={`$Github user${name}`} />
                     <span>
                         Joined <span>{formatDate()}</span>
                     </span>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing
+                        elit. Donec odio. Quisque volutpat mattis eros.
+                    </p>
+                    <div>
+                        <div>
+                            <span>Repos</span>
+                            {public_repos}
+                        </div>
+                        <div>
+                            <span>Followers</span>
+                            {followers}
+                        </div>
+                        <div>
+                            <span>Following</span>
+                            {following}
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
     );
-
-    // return (
-    //     <div>
-    //         <input type="text" value={searchTerm} onChange={handleChange} />
-    //         <button onClick={handleSubmit}>Search</button>
-    //         {gitHubUser ? (
-    //             <div>
-    //                 <h1>{gitHubUser.name}</h1>
-    //                 <p>{gitHubUser.bio}</p>
-    //             </div>
-    //         ) : (
-    //             <p>Enter a GitHub username to fetch data.</p>
-    //         )}
-    //     </div>
-    // );
 }
 
 export default App;
