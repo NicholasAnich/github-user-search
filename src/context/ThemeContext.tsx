@@ -1,22 +1,26 @@
 import { createContext, useState } from "react";
 
-export const ThemeContext = createContext<any>({
+type ThemeContextProviderProps = {
+    children: React.ReactNode;
+};
+
+interface ThemeContextInterface {
+    theme: string;
+    setTheme: React.Dispatch<React.SetStateAction<string>>;
+    setThemeInStorage: (theme: string) => void;
+}
+
+export const ThemeContext = createContext<ThemeContextInterface | any>({
     theme: "light",
-    undefined,
 });
 
-export const ThemeProvider: React.FC<{}> = ({ children }) => {
-    // const [theme, setTheme] = useState("light");
-    const [theme, setTheme] = useState(() => {
+export const ThemeProvider = ({ children }: ThemeContextProviderProps) => {
+    const [theme, setTheme] = useState<string>(() => {
         const valueInLocalStorage = window.localStorage.getItem("theme");
-        if (valueInLocalStorage) {
-            return valueInLocalStorage;
-        } else {
-            return "light";
-        }
+        return valueInLocalStorage ? valueInLocalStorage : "light";
     });
 
-    const setThemeInStorage = (theme) => {
+    const setThemeInStorage = (theme: string) => {
         localStorage.setItem("theme", theme);
     };
 

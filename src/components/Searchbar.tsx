@@ -1,10 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserData } from "../interfaces/interface";
 import axios from "axios";
 import searchIcon from "/assets/icon-search.svg";
+import styles from "./searchbar.module.scss";
+import { ThemeContext } from "../context/ThemeContext";
 
-export default function Searchbar({ setUser }) {
+export default function Searchbar({
+    setUser,
+}: {
+    setUser: (response: UserData) => void;
+}) {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [userName, setUserName] = useState<string>("octocat");
+    const { theme } = useContext(ThemeContext);
 
     let query = `https://api.github.com/users/${userName}`;
 
@@ -28,18 +36,21 @@ export default function Searchbar({ setUser }) {
     }, [userName]);
 
     return (
-        <div>
+        <div className={`${styles[theme]} ${styles.container}`}>
             <label htmlFor="search">
                 <img src={searchIcon} alt="search icon" />
             </label>
             <input
+                className={styles.input}
                 id="search"
                 type="text"
                 placeholder="Search GitHub username..."
                 onChange={handleChange}
                 value={searchTerm}
             />
-            <button onClick={handleSubmit}>Search</button>
+            <button className={styles.btn} onClick={handleSubmit}>
+                Search
+            </button>
         </div>
     );
 }

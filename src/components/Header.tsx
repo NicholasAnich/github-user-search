@@ -1,27 +1,34 @@
-import React from "react";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import styles from "./header.module.scss";
 
-function Header({ toggleTheme }) {
+type Toggler = {
+    toggleTheme: () => void;
+};
+
+function Header({ toggleTheme }: Toggler) {
     const { theme } = useContext(ThemeContext);
-    // console.log(theme);
+
+    function modeHandler() {
+        return theme === "light" ? "moon" : "sun";
+    }
+
     return (
-        <div>
+        <header className={`${styles.header} ${styles[theme]}`}>
             <h1>devfinder</h1>
             <span onClick={toggleTheme}>
-                {theme === "light" ? (
+                <div className={styles.themeToggle}>
+                    <span className={styles.themeTitle}>
+                        {theme.toUpperCase()}
+                    </span>
                     <img
-                        src="./public/assets/icon-moon.svg"
-                        alt="dark-mode moon icon"
+                        className={styles.icon}
+                        src={`/assets/icon-${modeHandler()}.svg`}
+                        alt={`${theme}-mode ${modeHandler()} icon`}
                     />
-                ) : (
-                    <img
-                        src="./public/assets/icon-sun.svg"
-                        alt="light-mode sun icon"
-                    />
-                )}
+                </div>
             </span>
-        </div>
+        </header>
     );
 }
 

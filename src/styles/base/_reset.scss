@@ -3,16 +3,33 @@
 body {
     padding: 0;
     margin: 0;
+    // height: 100vh;
+    // ba
+    // border: 1px solid #000;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 24px minmax(327px, 730px) 24px;
+    height: 100vh;
+    border: 1px solid blue;
+
+    // align-items: center;
+}
+
+.main-container {
+    grid-column: 2 / 3;
 }
 
 .light {
     color: $light-grey-blue;
+
     .text {
         color: $light-grey-blue;
     }
 
-    .background {
-        background-color: $light-white;
+    &-background {
+        background-color: $light-white-grey;
     }
 }
 
@@ -21,8 +38,9 @@ body {
     .text {
         color: $dark-white;
     }
-    .background {
-        background-color: $dark-black-blue;
+
+    &-background {
+        background-color: $dark-black;
     }
 }
 

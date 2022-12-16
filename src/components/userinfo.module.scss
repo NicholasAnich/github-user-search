@@ -1,0 +1,9 @@
+@use "../styles/abstracts/colors" as *;
+
+.light {
+    background-color: $light-white;
+}
+
+.dark {
+    background-color: $dark-black-blue;
+}

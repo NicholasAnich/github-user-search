@@ -1,1 +1,26 @@
 @use "../styles/abstracts/colors" as *;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // border: 1px solid #000;
+    margin-bottom: 36px;
+    margin-top: 31px;
+}
+
+.themeToggle {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.themeTitle {
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.icon {
+    width: 100%;
+    display: block;
+}
