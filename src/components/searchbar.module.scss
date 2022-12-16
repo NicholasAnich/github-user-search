@@ -1,0 +1,43 @@
+@use "../styles/abstracts/colors" as *;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: 16px;
+    padding: 0.47em;
+
+    border-radius: 15px;
+    // border: 1px solid #000;
+}
+
+.light {
+    background-color: $light-white;
+}
+
+.dark {
+    background-color: $dark-black-blue;
+    color: $dark-white;
+
+    .input::placeholder {
+        color: white;
+    }
+}
+
+.input {
+    color: inherit;
+    border: none;
+    padding: 0.8em;
+    background-color: transparent;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.btn {
+    color: $dark-white;
+    border: none;
+    background-color: $light-blue;
+    padding: 0.83em 1em;
+    border-radius: 10px;
+}
