@@ -1,0 +1,21 @@
+.dark {
+    .link > svg > path {
+        fill: red;
+    }
+}
+
+.list {
+    list-style: none;
+}
+
+.listItem {
+    display: flex;
+    color: inherit;
+    font-size: 13px;
+    gap: 13px;
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
+}

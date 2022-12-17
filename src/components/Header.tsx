@@ -19,7 +19,7 @@ function Header({ toggleTheme }: Toggler) {
             <span onClick={toggleTheme}>
                 <div className={styles.themeToggle}>
                     <span className={styles.themeTitle}>
-                        {theme.toUpperCase()}
+                        {theme === "light" ? "DARK" : "LIGHT"}
                     </span>
                     <img
                         className={styles.icon}

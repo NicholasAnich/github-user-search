@@ -18,6 +18,7 @@ const initialUser = {
     avatar_url: "",
     company: "",
     twitter_username: "",
+    blog: "",
 };
 
 function App() {

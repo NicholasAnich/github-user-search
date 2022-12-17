@@ -10,7 +10,7 @@ body {
 
 .app-container {
     display: grid;
-    grid-template-columns: 24px minmax(327px, 730px) 24px;
+    grid-template-columns: 24px minmax(0px, 730px) 24px;
     height: 100vh;
     border: 1px solid blue;
 
