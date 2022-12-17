@@ -27,7 +27,6 @@ export default function Searchbar({
     useEffect(() => {
         async function getUserData() {
             const response = await axios.get(query).then(({ data }) => {
-                console.log(data);
                 return data;
             });
             setUser(response);

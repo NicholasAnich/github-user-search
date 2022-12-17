@@ -1,9 +1,122 @@
 @use "../styles/abstracts/colors" as *;
 
+// MAIN CONTAINER
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    // box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+    border-radius: 15px;
+    padding-inline: 24px;
+    padding-block: 32px 1em;
+}
+
+// THEMES
 .light {
     background-color: $light-white;
+    box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+
+    .user {
+        background-color: $light-white-grey;
+    }
 }
 
 .dark {
     background-color: $dark-black-blue;
+    .user {
+        background-color: $dark-black;
+    }
+    .heroName {
+        color: $dark-white;
+    }
+    .listIcon {
+        fill: #fff;
+    }
 }
+
+// HERO
+
+.heroContainer {
+    display: flex;
+    gap: 19px;
+    font-size: 13px;
+    margin-bottom: 33px;
+}
+.heroName {
+    color: $light-black;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.heroLogin {
+    color: $light-blue;
+    font-size: inherit;
+}
+
+.heroJoined {
+    font-size: inherit;
+}
+
+.heroImage {
+    max-width: 100%;
+    display: block;
+    height: 70px;
+}
+
+//USER BODY
+
+.text {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+// USER META DATA
+.userMetaContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.user {
+    // border: 1px solid #000;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 18px 15px;
+    grid-auto-flow: column;
+    border-radius: 10px;
+}
+
+.userData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userTitle {
+    font-size: 11px;
+}
+
+.digit {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 23.7px;
+}
+
+// // SOCIAL MEDIA AND OTHER
+// .list {
+//     list-style: none;
+// }
+
+// .listItem {
+//     display: flex;
+//     color: inherit;
+//     font-size: 13px;
+//     gap: 13px;
+// }
+
+// .link {
+//     color: inherit;
+//     text-decoration: none;
+// }
