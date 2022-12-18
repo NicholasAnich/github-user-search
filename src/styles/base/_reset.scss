@@ -3,9 +3,6 @@
 body {
     padding: 0;
     margin: 0;
-    // height: 100vh;
-    // ba
-    // border: 1px solid #000;
 }
 
 .app-container {
@@ -13,6 +10,10 @@ body {
     grid-template-columns: 24px minmax(0px, 730px) 24px;
     height: 100vh;
     border: 1px solid blue;
+
+    @media (min-width: 375px) {
+        grid-template-columns: 24px minmax(327px, 730px) 24px;
+    }
 
     // align-items: center;
 }
