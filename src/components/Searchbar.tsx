@@ -36,7 +36,7 @@ export default function Searchbar({
 
     return (
         <div className={`${styles[theme]} ${styles.container}`}>
-            <label htmlFor="search">
+            <label htmlFor="search" className={styles.image}>
                 <img src={searchIcon} alt="search icon" />
             </label>
             <input

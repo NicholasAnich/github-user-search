@@ -26,6 +26,12 @@
     }
 }
 
+.image {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 .input {
     color: inherit;
     border: none;
@@ -43,4 +49,8 @@
     border-radius: 10px;
     flex-grow: 1;
     max-width: 106px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }

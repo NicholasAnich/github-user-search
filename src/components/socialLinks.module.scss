@@ -1,21 +1,42 @@
+@use "../styles/abstracts/colors" as *;
+
 .dark {
     .link > svg > path {
-        fill: red;
+        fill: #fff;
     }
 }
 
 .list {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    // gap: 16px;
+    // margin-bottom: 16px;
 }
 
 .listItem {
     display: flex;
     color: inherit;
     font-size: 13px;
-    gap: 13px;
+    // gap: 13px;
+    margin-bottom: 16px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .link {
     color: inherit;
     text-decoration: none;
+    margin-right: 13px;
+}
+
+.locationMargin {
+    margin-right: 16px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }
