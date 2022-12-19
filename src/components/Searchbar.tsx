@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, SyntheticEvent } from "react";
 import { UserData } from "../interfaces/interface";
 import axios from "axios";
 import searchIcon from "/assets/icon-search.svg";
@@ -20,7 +20,8 @@ export default function Searchbar({
         setSearchTerm(event.target.value);
     }
 
-    function handleSubmit() {
+    function handleSubmit(event: SyntheticEvent) {
+        event.preventDefault();
         setUserName(searchTerm);
     }
 
@@ -35,21 +36,29 @@ export default function Searchbar({
     }, [userName]);
 
     return (
-        <div className={`${styles[theme]} ${styles.container}`}>
-            <label htmlFor="search" className={styles.image}>
+        <form
+            role="search"
+            className={`${styles[theme]} ${styles.container}`}
+            onSubmit={handleSubmit}
+        >
+            <label htmlFor="search_2" className={styles.image}>
                 <img src={searchIcon} alt="search icon" />
             </label>
             <input
                 className={styles.input}
-                id="search"
-                type="text"
+                id="search_2"
+                type="search"
                 placeholder="Search GitHub username..."
                 onChange={handleChange}
                 value={searchTerm}
             />
-            <button className={styles.btn} onClick={handleSubmit}>
+            <button
+                type="submit"
+                className={styles.btn}
+                // onClick={handleSubmit}
+            >
                 Search
             </button>
-        </div>
+        </form>
     );
 }

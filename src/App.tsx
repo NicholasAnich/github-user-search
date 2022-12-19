@@ -41,6 +41,8 @@ function App() {
         setGitHubUser(response);
     }
 
+    console.log(gitHubUser);
+
     return (
         <div className={`App ${theme}-background app-container`}>
             <div className={`${theme} main-container`}>
