@@ -42,7 +42,7 @@ export default function Searchbar({
             onSubmit={handleSubmit}
         >
             <label htmlFor="search_2" className={styles.image}>
-                <img src={searchIcon} alt="search icon" />
+                <img src={searchIcon} alt="Search GitHub User" />
             </label>
             <input
                 className={styles.input}
