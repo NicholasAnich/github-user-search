@@ -32,13 +32,22 @@ export default function UserInfo({ user }: { user: UserData }) {
 
     return (
         <div className={`${styles[theme]} ${styles.container}`}>
-            <div className={styles.heroContainer}>
+            {/* <div className={styles.profile}> */}
+            <div className={styles.imageContainer}>
                 <img
                     className={`github-avatar ${styles.heroImage}`}
                     src={avatar_url}
                     alt={`$Github user ${name}`}
                     width={70}
                 />
+            </div>
+            <div className={styles.heroContainer}>
+                {/* <img
+                    className={`github-avatar ${styles.heroImage}`}
+                    src={avatar_url}
+                    alt={`$Github user ${name}`}
+                    width={70}
+                /> */}
                 <div className={styles.heroInfo}>
                     <h1 className={styles.heroName}>{name}</h1>
                     <h3 className={styles.heroLogin}>@{login}</h3>
@@ -47,12 +56,13 @@ export default function UserInfo({ user }: { user: UserData }) {
                     </span>
                 </div>
             </div>
+            {/* </div> */}
+            <p className={styles.text}>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                Donec odio. Quisque volutpat mattis eros.
+            </p>
 
             <div className={styles.userMetaContainer}>
-                <p className={styles.text}>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing
-                    elit. Donec odio. Quisque volutpat mattis eros.
-                </p>
                 <div className={styles.user}>
                     <div className={styles.userData}>
                         <span className={styles.userTitle}>Repos</span>

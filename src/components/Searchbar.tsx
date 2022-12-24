@@ -41,7 +41,8 @@ export default function Searchbar({
             className={`${styles[theme]} ${styles.container}`}
             onSubmit={handleSubmit}
         >
-            <label htmlFor="search_2" className={styles.image}>
+            <div className={styles.search}>
+                {/* <label htmlFor="search_2" className={styles.image}> */}
                 <img
                     src={searchIcon}
                     alt="Search GitHub User"
@@ -49,15 +50,16 @@ export default function Searchbar({
                     width="20"
                     height="20"
                 />
-            </label>
-            <input
-                className={styles.input}
-                id="search_2"
-                type="search"
-                placeholder="Search GitHub username..."
-                onChange={handleChange}
-                value={searchTerm}
-            />
+                {/* </label> */}
+                <input
+                    className={styles.input}
+                    id="search_2"
+                    type="search"
+                    placeholder="Search GitHub username..."
+                    onChange={handleChange}
+                    value={searchTerm}
+                />
+            </div>
             <button type="submit" className={styles.btn}>
                 Search
             </button>

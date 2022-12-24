@@ -15,6 +15,10 @@
     }
 }
 
+.title {
+    font-size: 1.625rem;
+}
+
 .themeToggle {
     display: flex;
     align-items: center;
@@ -26,6 +30,7 @@
 }
 
 .themeTitle {
+    font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 2.5px;
 }

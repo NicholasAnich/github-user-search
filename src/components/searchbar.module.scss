@@ -2,18 +2,16 @@
 
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 7px;
-    flex-wrap: wrap;
+    padding-block: 6.5px 7.5px;
+    padding-inline: 16px 7px;
 
     margin-bottom: 16px;
-    padding: 0.47em;
 
     border-radius: 15px;
 
     @media (min-width: 40.625em) {
-        // padding-block: 22px;
+        padding-block: 9.5px;
+        padding-inline: 32px 10px;
     }
 }
 
@@ -31,7 +29,20 @@
     }
 }
 
+.search {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    @media (min-width: 40.625em) {
+        gap: 24px;
+    }
+}
+
 .image {
+    display: block;
+    width: 100%;
+
     margin-left: 0.53125em;
     @media (min-width: 40.625em) {
         margin-left: 2em;
@@ -51,15 +62,21 @@
 }
 
 .input {
-    color: inherit;
-    border: none;
-    padding: 0.8em;
-    line-height: 1.5625;
-    background-color: transparent;
-    margin: 0;
     flex-grow: 1;
 
+    color: inherit;
+    background-color: transparent;
+
+    font-size: 13px;
+    line-height: 1.5625;
+
+    margin: 0;
+
+    border: none;
+
     &::placeholder {
+        font-family: "Mono Space";
+        font-stretch: expanded;
         opacity: 1;
         color: $light-grey-blue;
     }
@@ -67,17 +84,23 @@
     @media (min-width: 40.625em) {
         font-size: 1.125rem;
         font-weight: 400;
+        min-width: 254px;
     }
 }
 
 .btn {
     color: $dark-white;
-    border: none;
     background-color: $light-blue;
-    padding: 0.83em 1em;
+
+    font-weight: 700;
+    line-height: 20.73px;
+    letter-spacing: 1px;
+
+    padding: 12.5px 14px 12.5px 18px;
+    margin-left: auto;
+
+    border: none;
     border-radius: 10px;
-    flex-grow: 1;
-    max-width: 106px;
 
     @media (min-width: 40.625em) {
         font-size: 1rem;
