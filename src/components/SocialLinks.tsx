@@ -122,7 +122,7 @@ export default function SocialLinks({
                         <span>{company}</span>
                     ) : (
                         <span className={styles.disabled}>
-                            Not Available
+                            Not Available.
                         </span>
                     )}
                 </li>
