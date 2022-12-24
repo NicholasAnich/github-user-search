@@ -17,7 +17,7 @@ export default function SocialLinks({
     return (
         <div className={`${styles[theme]} ${styles.userSocial}`}>
             <ul className={styles.list}>
-                <li className={styles.listItem}>
+                <li className={`${styles.listItem} ${styles.location}`}>
                     <a
                         href="#"
                         className={`${styles.link} ${
@@ -44,7 +44,7 @@ export default function SocialLinks({
                         </span>
                     )}
                 </li>
-                <li className={`${styles.listItem}`}>
+                <li className={`${styles.listItem} ${styles.blog}`}>
                     <a
                         href="#"
                         className={`${styles.link} ${
@@ -74,7 +74,7 @@ export default function SocialLinks({
                         </span>
                     )}
                 </li>
-                <li className={styles.listItem}>
+                <li className={`${styles.listItem} ${styles.twitter}`}>
                     <a
                         href="#"
                         className={`${styles.link} ${
@@ -100,7 +100,7 @@ export default function SocialLinks({
                         </span>
                     )}
                 </li>
-                <li className={styles.listItem}>
+                <li className={`${styles.listItem} ${styles.company}`}>
                     <a
                         href="#"
                         className={`${styles.link} ${

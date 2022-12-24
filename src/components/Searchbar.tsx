@@ -42,7 +42,13 @@ export default function Searchbar({
             onSubmit={handleSubmit}
         >
             <label htmlFor="search_2" className={styles.image}>
-                <img src={searchIcon} alt="search icon" />
+                <img
+                    src={searchIcon}
+                    alt="Search GitHub User"
+                    className={styles.img}
+                    width="20"
+                    height="20"
+                />
             </label>
             <input
                 className={styles.input}
@@ -52,11 +58,7 @@ export default function Searchbar({
                 onChange={handleChange}
                 value={searchTerm}
             />
-            <button
-                type="submit"
-                className={styles.btn}
-                // onClick={handleSubmit}
-            >
+            <button type="submit" className={styles.btn}>
                 Search
             </button>
         </form>

@@ -9,7 +9,6 @@ body {
     display: grid;
     grid-template-columns: 24px minmax(0px, 730px) 24px;
     height: 100vh;
-    // border: 1px solid blue;
 
     @media (min-width: 375px) {
         grid-template-columns: minmax(24px, 98px) minmax(327px, 730px) minmax(
@@ -22,7 +21,6 @@ body {
     @media (min-width: 572px) {
         align-content: center;
     }
-    // align-items: center;
 }
 
 .main-container {

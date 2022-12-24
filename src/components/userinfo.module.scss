@@ -8,6 +8,11 @@
     border-radius: 15px;
     padding-inline: 24px;
     padding-block: 32px 1em;
+
+    @media (min-width: 40.625em) {
+        padding-inline: 2.5em;
+        padding-block: 2.5em;
+    }
 }
 
 // THEMES
@@ -17,6 +22,10 @@
 
     .user {
         background-color: $light-white-grey;
+    }
+
+    .digit {
+        color: $neutral-900;
     }
 }
 
@@ -39,33 +48,69 @@
     gap: 19px;
     font-size: 13px;
     margin-bottom: 33px;
+
+    @media (min-width: 40.625em) {
+        align-items: center;
+        gap: 40px;
+        margin-bottom: 24px;
+    }
 }
+.heroInfo {
+    @media (min-width: 40.625em) {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
 .heroName {
     color: $light-black;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
+
+    @media (min-width: 40.625em) {
+        font-size: 1.625rem;
+    }
 }
 
 .heroLogin {
     color: $light-blue;
     font-size: inherit;
     font-weight: 400;
+
+    @media (min-width: 40.625em) {
+        font-size: 1rem;
+    }
 }
 
 .heroJoined {
     font-size: inherit;
+    @media (min-width: 40.625em) {
+        font-size: 0.9375rem;
+    }
 }
 
 .heroImage {
     max-width: 100%;
     display: block;
     height: 70px;
+
+    @media (min-width: 40.625em) {
+        width: 117px;
+        height: 117px;
+    }
 }
 
 //USER BODY
 .text {
     font-size: 13px;
     font-weight: 400;
+    line-height: 1.5625;
+
+    @media (min-width: 40.625em) {
+        font-size: 0.9375rem;
+        line-height: 1.625;
+    }
 }
 
 // USER META DATA
@@ -73,6 +118,10 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    @media (min-width: 40.625em) {
+        gap: 30px;
+    }
 }
 
 .user {
@@ -82,6 +131,12 @@
     padding: 18px 15px;
     grid-auto-flow: column;
     border-radius: 10px;
+
+    @media (min-width: 40.625em) {
+        // display: flex;
+        padding-inline: 32px;
+        justify-items: start;
+    }
 }
 
 .userData {
@@ -89,14 +144,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: 40.625em) {
+        align-items: initial;
+    }
 }
 
 .userTitle {
-    font-size: 11px;
+    font-size: 0.6875rem;
+
+    @media (min-width: 40.625em) {
+        font-size: 0.8125rem;
+        margin-bottom: 10px;
+        line-height: 1.1875;
+    }
 }
 
 .digit {
     font-size: 16px;
     font-weight: 700;
     line-height: 23.7px;
+
+    @media (min-width: 40.625em) {
+        font-size: 1.375rem;
+    }
 }
