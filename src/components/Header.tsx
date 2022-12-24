@@ -15,7 +15,7 @@ function Header({ toggleTheme }: Toggler) {
 
     return (
         <header className={`${styles.header} ${styles[theme]}`}>
-            <h1>devfinder</h1>
+            <h1 className={styles.title}>devfinder</h1>
             <span onClick={toggleTheme}>
                 <div className={styles.themeToggle}>
                     <span className={styles.themeTitle}>

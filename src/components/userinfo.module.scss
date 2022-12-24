@@ -23,6 +23,10 @@
     .user {
         background-color: $light-white-grey;
     }
+
+    .digit {
+        color: $neutral-900;
+    }
 }
 
 .dark {
@@ -46,9 +50,19 @@
     margin-bottom: 33px;
 
     @media (min-width: 40.625em) {
+        align-items: center;
         gap: 40px;
+        margin-bottom: 24px;
     }
 }
+.heroInfo {
+    @media (min-width: 40.625em) {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
 .heroName {
     color: $light-black;
     font-size: 1rem;
@@ -91,6 +105,7 @@
 .text {
     font-size: 13px;
     font-weight: 400;
+    line-height: 1.5625;
 
     @media (min-width: 40.625em) {
         font-size: 0.9375rem;
@@ -103,6 +118,10 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    @media (min-width: 40.625em) {
+        gap: 30px;
+    }
 }
 
 .user {
@@ -112,6 +131,12 @@
     padding: 18px 15px;
     grid-auto-flow: column;
     border-radius: 10px;
+
+    @media (min-width: 40.625em) {
+        // display: flex;
+        padding-inline: 32px;
+        justify-items: start;
+    }
 }
 
 .userData {
@@ -119,14 +144,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: 40.625em) {
+        align-items: initial;
+    }
 }
 
 .userTitle {
-    font-size: 11px;
+    font-size: 0.6875rem;
+
+    @media (min-width: 40.625em) {
+        font-size: 0.8125rem;
+        margin-bottom: 10px;
+        line-height: 1.1875;
+    }
 }
 
 .digit {
     font-size: 16px;
     font-weight: 700;
     line-height: 23.7px;
+
+    @media (min-width: 40.625em) {
+        font-size: 1.375rem;
+    }
 }
