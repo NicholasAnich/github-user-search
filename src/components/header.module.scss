@@ -13,6 +13,26 @@
     .title {
         color: #222731;
     }
+
+    .themeToggle:hover {
+        .themeTitle {
+            color: $hover-light;
+        }
+        .icon > path {
+            fill: $hover-light;
+        }
+    }
+}
+
+.dark {
+    .themeToggle:hover {
+        .themeTitle {
+            color: $hover-dark;
+        }
+        .icon > path {
+            fill: $hover-dark;
+        }
+    }
 }
 
 .title {
