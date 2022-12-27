@@ -5,7 +5,17 @@ import { ThemeContext } from "../context/ThemeContext";
 import SocialLinks from "./SocialLinks";
 import styles from "./userinfo.module.scss";
 
-export default function UserInfo({ user }: { user: UserData }) {
+type Errors = {
+    message?: string;
+};
+
+interface Props {
+    user: UserData;
+    errors: Errors | null;
+    isLoading: boolean;
+}
+
+export default function UserInfo({ user, errors, isLoading }: Props) {
     const { theme } = useContext(ThemeContext);
     const {
         name,
@@ -15,7 +25,7 @@ export default function UserInfo({ user }: { user: UserData }) {
         following,
         created_at,
         location,
-        url,
+        bio,
         avatar_url,
         company,
         twitter_username,
@@ -30,57 +40,82 @@ export default function UserInfo({ user }: { user: UserData }) {
         company: company,
     };
 
-    return (
-        <div className={`${styles[theme]} ${styles.container}`}>
-            {/* <div className={styles.profile}> */}
-            <div className={styles.imageContainer}>
+    if (errors) {
+        return (
+            <div className={`${styles[theme]} ${styles.errContainer}`}>
                 <img
-                    className={`github-avatar ${styles.heroImage}`}
-                    src={avatar_url}
-                    alt={`$Github user ${name}`}
-                    width={70}
+                    className={styles.errorImage}
+                    src="./assets/octobiwan.svg"
+                    alt="octocat jedi"
+                    height={100}
                 />
+                <span className={styles.errorMessage}>
+                    {errors.message}
+                </span>
             </div>
-            <div className={styles.heroContainer}>
-                {/* <img
-                    className={`github-avatar ${styles.heroImage}`}
-                    src={avatar_url}
-                    alt={`$Github user ${name}`}
-                    width={70}
-                /> */}
-                <div className={styles.heroInfo}>
-                    <h1 className={styles.heroName}>{name}</h1>
-                    <h3 className={styles.heroLogin}>@{login}</h3>
-                    <span className={styles.heroJoined}>
-                        Joined <span>{formatDate(created_at)}</span>
-                    </span>
+        );
+    } else {
+        if (isLoading) {
+            return (
+                <div className={`${styles[theme]} ${styles.errContainer}`}>
+                    <span className={styles.isLoading}>Loading...</span>
                 </div>
-            </div>
-            {/* </div> */}
-            <p className={styles.text}>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                Donec odio. Quisque volutpat mattis eros.
-            </p>
-
-            <div className={styles.userMetaContainer}>
-                <div className={styles.user}>
-                    <div className={styles.userData}>
-                        <span className={styles.userTitle}>Repos</span>
-                        <span className={styles.digit}>
-                            {public_repos}
+            );
+        }
+        return (
+            <div className={`${styles[theme]} ${styles.container}`}>
+                <div className={styles.imageContainer}>
+                    <img
+                        className={`github-avatar ${styles.heroImage}`}
+                        src={avatar_url}
+                        alt={`$Github user ${name ? name : "empty..."}`}
+                        width={70}
+                    />
+                </div>
+                <div className={styles.heroContainer}>
+                    <div className={styles.heroInfo}>
+                        <h1 className={styles.heroName}>
+                            {name ? name : "my name..."}
+                        </h1>
+                        <h3 className={styles.heroLogin}>@{login}</h3>
+                        <span className={styles.heroJoined}>
+                            Joined{" "}
+                            <span>{formatDate(created_at ?? "")}</span>
                         </span>
                     </div>
-                    <div className={styles.userData}>
-                        <span className={styles.userTitle}>Followers</span>
-                        <span className={styles.digit}>{followers}</span>
-                    </div>
-                    <div className={styles.userData}>
-                        <span className={styles.userTitle}>Following</span>
-                        <span className={styles.digit}>{following}</span>
-                    </div>
                 </div>
-                <SocialLinks {...socialLinksProps} />
+                <p className={styles.text}>
+                    {bio ? bio : "This profile has no bio"}
+                </p>
+
+                <div className={styles.userMetaContainer}>
+                    <div className={styles.user}>
+                        <div className={styles.userData}>
+                            <span className={styles.userTitle}>Repos</span>
+                            <span className={styles.digit}>
+                                {public_repos}
+                            </span>
+                        </div>
+                        <div className={styles.userData}>
+                            <span className={styles.userTitle}>
+                                Followers
+                            </span>
+                            <span className={styles.digit}>
+                                {followers}
+                            </span>
+                        </div>
+                        <div className={styles.userData}>
+                            <span className={styles.userTitle}>
+                                Following
+                            </span>
+                            <span className={styles.digit}>
+                                {following}
+                            </span>
+                        </div>
+                    </div>
+                    <SocialLinks {...socialLinksProps} />
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }

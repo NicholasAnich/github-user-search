@@ -65,6 +65,23 @@
     }
 }
 
+.errContainer {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    min-height: 408px;
+    border-radius: 15px;
+}
+
+.errorMessage {
+    color: $error-msg;
+    align-self: start;
+}
+
+.errorImage {
+    align-self: end;
+}
+
 // HERO
 .heroContainer {
     display: flex;

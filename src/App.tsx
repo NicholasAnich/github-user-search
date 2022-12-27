@@ -14,18 +14,24 @@ const initialUser = {
     following: 0,
     created_at: "",
     location: "",
-    url: "",
+    bio: "",
     avatar_url: "",
     company: "",
     twitter_username: "",
     blog: "",
 };
 
+interface Errors {
+    message?: string;
+}
+
 function App() {
     const { theme, setTheme, setThemeInStorage } =
         useContext(ThemeContext);
 
     const [gitHubUser, setGitHubUser] = useState<UserData>(initialUser);
+    const [error, setError] = useState<Errors | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     function toggleTheme() {
         if (theme === "light") {
@@ -41,15 +47,25 @@ function App() {
         setGitHubUser(response);
     }
 
-    console.log(gitHubUser);
+    function setLoadingScreen(load: boolean) {
+        setIsLoading(load);
+    }
 
     return (
         <div className={`App ${theme}-background app-container`}>
             <div className={`${theme} main-container`}>
                 <Header toggleTheme={toggleTheme} />
                 <main className="background">
-                    <Searchbar setUser={setUser} />
-                    <UserInfo user={gitHubUser} />
+                    <Searchbar
+                        setUser={setUser}
+                        setError={setError}
+                        setLoadingScreen={setLoadingScreen}
+                    />
+                    <UserInfo
+                        user={gitHubUser}
+                        errors={error}
+                        isLoading={isLoading}
+                    />
                 </main>
             </div>
         </div>
