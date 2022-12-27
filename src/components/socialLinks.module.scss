@@ -50,14 +50,25 @@
     margin-right: 16px;
 }
 
-.disabled {
-    pointer-events: none;
-    opacity: 0.5;
-}
-
 .twitter {
     @media (min-width: 40.625em) {
         grid-column: 2;
         grid-row: 1;
     }
+}
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.blog {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.location,
+.company,
+.twitter {
+    pointer-events: none;
 }

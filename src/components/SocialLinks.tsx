@@ -2,10 +2,10 @@
 import styles from "./socialLinks.module.scss";
 type SocialProps = {
     theme: string;
-    location: string;
-    blog: string;
-    twitter_username: string;
-    company: string;
+    location?: string;
+    blog?: string;
+    twitter_username?: string;
+    company?: string;
 };
 export default function SocialLinks({
     theme,
@@ -14,15 +14,22 @@ export default function SocialLinks({
     twitter_username,
     company,
 }: SocialProps) {
+    function handleClick() {
+        console.log("clicked");
+        console.log(blog);
+        window.open(blog, "_blank");
+    }
     return (
         <div className={`${styles[theme]} ${styles.userSocial}`}>
             <ul className={styles.list}>
-                <li className={`${styles.listItem} ${styles.location}`}>
+                <li
+                    className={`${styles.listItem} ${styles.location} ${
+                        location ? "" : styles.disabled
+                    } `}
+                >
                     <a
                         href="#"
-                        className={`${styles.link} ${
-                            styles.locationMargin
-                        } ${location ? "" : styles.disabled}`}
+                        className={`${styles.link} ${styles.locationMargin} `}
                     >
                         <svg
                             aria-label="location icon"
@@ -44,13 +51,13 @@ export default function SocialLinks({
                         </span>
                     )}
                 </li>
-                <li className={`${styles.listItem} ${styles.blog}`}>
-                    <a
-                        href="#"
-                        className={`${styles.link} ${
-                            blog ? "" : styles.disabled
-                        }`}
-                    >
+                <li
+                    className={`${styles.listItem} ${styles.blog} ${
+                        blog ? "" : styles.disabled
+                    }`}
+                    onClick={handleClick}
+                >
+                    <a href="#" className={`${styles.link} `}>
                         <svg
                             height="20"
                             width="20"
@@ -74,13 +81,12 @@ export default function SocialLinks({
                         </span>
                     )}
                 </li>
-                <li className={`${styles.listItem} ${styles.twitter}`}>
-                    <a
-                        href="#"
-                        className={`${styles.link} ${
-                            twitter_username ? "" : styles.disabled
-                        }`}
-                    >
+                <li
+                    className={`${styles.listItem} ${styles.twitter} ${
+                        twitter_username ? "" : styles.disabled
+                    }`}
+                >
+                    <a href="#" className={`${styles.link} `}>
                         <svg
                             height="18"
                             width="20"
@@ -100,13 +106,12 @@ export default function SocialLinks({
                         </span>
                     )}
                 </li>
-                <li className={`${styles.listItem} ${styles.company}`}>
-                    <a
-                        href="#"
-                        className={`${styles.link} ${
-                            company ? "" : styles.disabled
-                        }`}
-                    >
+                <li
+                    className={`${styles.listItem} ${styles.company} ${
+                        company ? "" : styles.disabled
+                    }`}
+                >
+                    <a href="#" className={`${styles.link} `}>
                         <svg
                             height="20"
                             width="20"
