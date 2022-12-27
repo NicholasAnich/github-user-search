@@ -1,0 +1,61 @@
+@use "../styles/abstracts/colors" as *;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+    margin-top: 31px;
+}
+
+.light {
+    .title {
+        color: #222731;
+    }
+
+    .themeToggle:hover {
+        .themeTitle {
+            color: $hover-light;
+        }
+        .icon > path {
+            fill: $hover-light;
+        }
+    }
+}
+
+.dark {
+    .themeToggle:hover {
+        .themeTitle {
+            color: $hover-dark;
+        }
+        .icon > path {
+            fill: $hover-dark;
+        }
+    }
+}
+
+.title {
+    font-size: 1.625rem;
+}
+
+.themeToggle {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.themeTitle {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.icon {
+    width: 100%;
+    display: block;
+}

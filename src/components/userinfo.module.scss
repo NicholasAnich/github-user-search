@@ -1,0 +1,238 @@
+@use "../styles/abstracts/colors" as *;
+
+// MAIN CONTAINER
+.container {
+    display: grid;
+    grid-template-columns: 70px auto;
+    column-gap: 19px;
+
+    border-radius: 15px;
+
+    padding-inline: 24px;
+    padding-block: 32px 1em;
+
+    @media (min-width: 40.625em) {
+        grid-template-columns: 117px 1fr;
+        column-gap: 41px;
+        padding-inline: 2.5em;
+        padding-block: 2.5em;
+    }
+
+    @media (min-width: 56em) {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        align-items: start;
+        column-gap: 37px;
+
+        padding: 3em;
+    }
+}
+
+.profile {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 33px;
+
+    @media (min-width: 40.625em) {
+        margin-bottom: 24px;
+    }
+}
+
+// THEMES
+.light {
+    background-color: $light-white;
+    box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+
+    .user {
+        background-color: $light-white-grey;
+    }
+
+    .digit {
+        color: $neutral-900;
+    }
+}
+
+.dark {
+    background-color: $dark-black-blue;
+    .user {
+        background-color: $dark-black;
+    }
+    .heroName {
+        color: $dark-white;
+    }
+    .listIcon {
+        fill: #fff;
+    }
+}
+
+// HERO
+.heroContainer {
+    display: flex;
+    gap: 19px;
+    font-size: 13px;
+
+    @media (min-width: 40.625em) {
+        align-items: center;
+        gap: 40px;
+    }
+}
+.heroInfo {
+    @media (min-width: 40.625em) {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    @media (min-width: 56em) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+    }
+}
+
+.heroName {
+    color: $light-black;
+    font-size: 1rem;
+    font-weight: 700;
+
+    @media (min-width: 40.625em) {
+        font-size: 1.625rem;
+    }
+}
+
+.heroLogin {
+    color: $light-blue;
+    font-size: inherit;
+    font-weight: 400;
+
+    @media (min-width: 40.625em) {
+        font-size: 1rem;
+    }
+
+    @media (min-width: 56em) {
+        grid-column: 1;
+    }
+}
+
+.heroJoined {
+    font-size: inherit;
+    @media (min-width: 40.625em) {
+        font-size: 0.9375rem;
+    }
+    @media (min-width: 56em) {
+        justify-self: end;
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
+.imageContainer {
+    @media (min-width: 56em) {
+        grid-row: span 2;
+    }
+}
+
+.heroImage {
+    max-width: 100%;
+    display: block;
+    height: 70px;
+
+    @media (min-width: 40.625em) {
+        width: 117px;
+        height: 117px;
+    }
+
+    @media (min-width: 56em) {
+        height: 100%;
+    }
+}
+
+//USER BODY
+.text {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 25px;
+
+    grid-column: span 2;
+
+    margin-bottom: 24px;
+    margin-top: 33px;
+
+    @media (min-width: 40.625em) {
+        font-size: 0.9375rem;
+        line-height: 1.625;
+
+        margin-bottom: 32px;
+        margin-top: 24px;
+    }
+
+    @media (min-width: 900px) {
+        grid-column: 2;
+        grid-row: 2;
+        margin-top: 20px;
+    }
+}
+
+// USER META DATA
+.userMetaContainer {
+    grid-column: span 2;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (min-width: 40.625em) {
+        gap: 30px;
+    }
+    @media (min-width: 900px) {
+        grid-column: 2;
+        gap: 37px;
+    }
+}
+
+.user {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 18px 15px;
+    grid-auto-flow: column;
+    border-radius: 10px;
+
+    @media (min-width: 40.625em) {
+        padding-inline: 32px;
+        justify-items: start;
+    }
+}
+
+.userData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 40.625em) {
+        align-items: initial;
+    }
+}
+
+.userTitle {
+    font-size: 0.6875rem;
+    margin-bottom: 8px;
+
+    @media (min-width: 40.625em) {
+        font-size: 0.8125rem;
+        margin-bottom: 10px;
+        line-height: 1.1875;
+    }
+}
+
+.digit {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 23.7px;
+
+    @media (min-width: 40.625em) {
+        font-size: 1.375rem;
+    }
+}
